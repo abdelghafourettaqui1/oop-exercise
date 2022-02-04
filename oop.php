@@ -5,7 +5,7 @@ class Employer {
   public $lastname;
   public $gender;
   public $age;
-  function __construct($id,$firstname,$lastname,$gender,$age)
+  public function __construct($id,$firstname,$lastname,$gender,$age)
   {
     $this->id=$id;
     $this->firstname=$firstname;
@@ -46,6 +46,16 @@ class Employer {
 class Trainer extends Employer{
   public $laptopID;
   private $password;
+  public function __construct($id,$firstname,$lastname,$gender,$age,$laptopID,$password){
+    parent::__construct($id,$firstname,$lastname,$gender,$age);
+    $this->laptopID=$laptopID;
+    $this->password=$password;
+  }
+  function get_password()
+  {
+    return $this->password;
+    
+  }
   public function calc_absent_days(){}
   public function testing(){}
   public function teach(){}
@@ -62,8 +72,8 @@ class Student extends Employer{
   public function study(){}
   public function developing(){}
 }
-$trainer1 = new Trainer(1834,"Hamza","Gassai","male",22);
-$trainer2 = new Trainer(1084,"Reda","Reda","male",20);
+$trainer1 = new Trainer(1834,"Hamza","Gassai","male",22,53453,1234);
+$trainer2 = new Trainer(1084,"Reda","Reda","male",20,5473,4321);
 printf("|");
 echo "trainer number 1 ";
 printf("|");
@@ -81,6 +91,10 @@ echo $trainer1->get_gender();
 printf("|");
 echo $trainer1->get_age();
 printf("|");
+echo $trainer1->laptopID;
+printf("|");
+echo$trainer1->get_password();
+printf("|");
 printf("\n");
 printf("|");
 echo "trainer number 2 ";
@@ -94,6 +108,10 @@ printf("|");
 echo $trainer2->get_gender();
 printf("|");
 echo $trainer2->get_age();
+printf("|");
+echo $trainer2->laptopID;
+printf("|");
+echo$trainer2->get_password();
 printf("|");
 printf("\n");
 $student1 = new Student(1634,"abdelghafour","ETTAQUI","male",21);
